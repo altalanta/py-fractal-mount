@@ -1,0 +1,47 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "fractalmount"
+version = "0.1.0"
+description = "Interactive fractal mountain range generator (PySide6 + VisPy)"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.11"
+authors = [{ name = "FractalMount Authors" }]
+keywords = ["fractal", "terrain", "noise", "qt", "vispy", "mesh"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Multimedia :: Graphics :: 3D Modeling",
+]
+dependencies = [
+  "numpy>=1.25",
+  "imageio>=2.31",
+  "Pillow>=9.4",
+  "vispy>=0.13",
+  "PySide6>=6.5",
+]
+
+[project.optional-dependencies]
+numba = ["numba>=0.58"]
+mesh = ["trimesh>=4", "numpy-stl>=3.0"]
+test = ["pytest>=7.4", "numpy>=1.25"]
+
+[project.scripts]
+fractalmount = "fractalmount.cli:main"
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
